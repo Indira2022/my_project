@@ -1,0 +1,20 @@
+artifact_path: synthetic_regression_model
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.11.4
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.6.1
+mlflow_version: 2.20.1
+model_size_bytes: 467
+model_uuid: f74401b0bd4f409d98686121c03e3a96
+run_id: 29b63098e97a4be79a4de525bd7eff2f
+utc_time_created: '2025-02-12 09:12:37.740114'

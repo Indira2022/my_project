@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/indir/Desktop/Data%20Science/homework/mlruns/0/4c6db9b03ae748b08d66a6486ffaf7fc/artifacts
+end_time: 1739352058683
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4c6db9b03ae748b08d66a6486ffaf7fc
+run_name: welcoming-grub-191
+run_uuid: 4c6db9b03ae748b08d66a6486ffaf7fc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1739352055247
+status: 3
+tags: []
+user_id: indir
