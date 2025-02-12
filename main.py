@@ -1,39 +1,39 @@
-import pickle
-import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
+import pickle
 import pandas as pd
+import numpy as np
 
-app = FastAPI(title = "Prediction API")
+# Создаем FastAPI приложение
+app = FastAPI()
 
-#Load the trained model
-with open("model.pkl", "wb") as f:
+# Загружаем модель, сохраненную в формате .pkl
+with open("random_forest_model.pkl", "rb") as f:
     model = pickle.load(f)
 
+# Определяем модель данных для входных данных из датасета heart.csv
+class InputData(BaseModel):
+    age: float           # Возраст
+    sex: int             # Пол (0 или 1)
+    cp: int              # Тип боли в груди
+    trestbps: float      # Кровяное давление в покое
+    chol: float          # Холестерин
+    fbs: int             # Уровень сахара в крови (0 или 1)
+    restecg: int         # Электрокардиографический результат
+    thalach: float       # Максимальная частота пульса
+    exang: int           # Стенокардия (0 или 1)
+    oldpeak: float       # Старое изменение депрессии
+    slope: int           # Наклон пика упражнений
+    ca: int              # Количество крупных сосудов
+    thal: int            # Тип талассемии
 
-class Person(BaseModel):
-    age: int
-    sex: int
-    oldpeak: float
-    
+# Эндпоинт для получения предсказания
+@app.post("/predict/")
+def predict(data: InputData):
+    # Преобразуем данные в DataFrame
+    input_data = pd.DataFrame([data.dict()])  # вызываем dict() на экземпляре объекта
 
-@app.get("/")
-def road_root():
-    return {"message": "Welcome to Prediction Model API"}
+    # Получаем предсказание от модели
+    prediction = model.predict(input_data)
 
-
-@app.get("/")
-def read_root():
-    return {"message": "Welcome to Titanic Survival Prediction API"}
-
-
-@app.post("/predict")
-def predict(person: Person):
-    data = person.dict()
-    df = pd.DataFrame([data])
-    prediction = model.predict(df)[0]
-    return {"Survived": int(prediction)}
-
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8001)
+    return {"prediction": int(prediction[0])}

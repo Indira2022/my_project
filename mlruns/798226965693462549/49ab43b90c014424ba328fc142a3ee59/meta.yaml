@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/indir/Desktop/Data%20Science/homework/mlruns/798226965693462549/49ab43b90c014424ba328fc142a3ee59/artifacts
+end_time: 1739385256269
+entry_point_name: ''
+experiment_id: '798226965693462549'
+lifecycle_stage: active
+run_id: 49ab43b90c014424ba328fc142a3ee59
+run_name: flawless-penguin-795
+run_uuid: 49ab43b90c014424ba328fc142a3ee59
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1739385256084
+status: 3
+tags: []
+user_id: indir
